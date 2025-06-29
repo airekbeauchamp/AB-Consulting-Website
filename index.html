@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airek Beauchamp Consulting | Strategic Communication That Actually Works</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+            margin: 0 auto 2rem;
+            filter: invert(1);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #ff3333 0%, #ff7700 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        nav li {
+            margin: 0 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            font-weight: 300;
+        }
+
+        .intro {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ff4444 0%, #ffaa00 100%);
+        }
+
+        .intro p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,68,68,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+
+        .stats-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .philosophy {
+            background: #f8f9fa;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .approach-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .approach-item h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-cta {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            padding: 1rem;
+        }
+
+        .contact-item h3 {
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero-content {
+                padding: 2rem 0;
+            }
+            
+            .logo {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <!-- Logo placeholder - you'll insert your actual logo here -->
+                <div class="logo" style="background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">Your Logo Here</div>
+                
+                <h1>Strategic Communication That Actually Works</h1>
+                <p class="tagline">I help businesses develop authentic content strategies that demonstrate real expertise</p>
+                <p class="hero-description">No buzzword soup. No generic templates. No AI-generated fluff that could be selling anything. Just communication systems that reflect who you actually are and get results that matter.</p>
+                <a href="#contact" class="cta-button">Let's Build Something Real</a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What I Actually Do</h2>
+            <div class="intro">
+                <p>While most consultants are busy creating content that sounds like it was written by a committee of robots, I focus on what actually moves the needle: <span class="highlight">authentic expertise that people can't ignore</span>.</p>
+                
+                <p>Seven years of scaling communication programs in higher education taught me that systems beat scattered tactics every time. I've secured <span class="highlight">$365,668 in competitive funding</span> by understanding that people pay premium prices for genuine knowledge delivered with clarity and conviction.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Content Strategy & Brand Voice</h3>
+                    <p>Develop consistent messaging across all platforms - from LinkedIn posts to grant proposals to speaking topics. I help you maintain your authentic voice whether you're writing, presenting, or posting on social media.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Grant Writing & Funding Strategy</h3>
+                    <p>Turn your vision into funded reality. I understand what funders actually want to see and how to present your expertise in ways that get results, not just participation trophies.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Cross-Platform Communication Systems</h3>
+                    <p>Build content ecosystems where everything works together. Your newsletter reinforces your speaking topics, which support your client work, which feeds back into your thought leadership.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Training & Process Documentation</h3>
+                    <p>Create systems that work without you. Whether it's team communication protocols or client onboarding processes, I help you build scalable frameworks that maintain quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="stats">
+        <div class="container">
+            <div class="stats-content">
+                <h2 class="section-title">Proven Track Record</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>$365K+</h3>
+                        <p>Secured in competitive funding</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>300%</h3>
+                        <p>Growth in digital platform (first year)</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>7 Years</h3>
+                        <p>Building and scaling communication systems</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Team members managed and developed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="approach" class="philosophy">
+        <div class="container">
+            <h2 class="section-title">The Anti-Generic Approach</h2>
+            <div class="intro">
+                <p>I don't create content that sounds like it was generated by an AI trained on LinkedIn posts. I don't help people become bland, interchangeable "thought leaders." And I definitely don't do <span class="highlight">buzzword soup</span>.</p>
+                
+                <p>Instead, I help you figure out what you're actually good at, find the people who need exactly that, and build communication systems that let you deliver value without pretending to be someone else.</p>
+                
+                <p>The market is oversaturated with generic advice and cookie-cutter solutions. What's rare is <span class="highlight">genuine expertise delivered with authentic voice</span>. That's what people pay premium prices for, and that's what we'll build together.</p>
+            </div>
+            
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <h3>Real Expertise Over Generic Polish</h3>
+                    <p>Your knowledge and experience are your differentiators. I help you showcase what you actually know instead of hiding behind stock photography and generic messaging.</p>
+                </div>
+                
+                <div class="approach-item">
+                    <h3>Systems That Scale</h3>
+                    <p>One-off tactics don't build businesses. I create communication frameworks that grow with you while maintaining quality and authenticity.</p>
+                </div>
+                
+                <div class="approach-item">
+                    <h3>Platform Integration</h3>
+                    <p>Your content should work together, not compete with itself. I help you build ecosystems where every piece reinforces your expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Build Something Real?</h2>
+            <p class="contact-cta">Let's talk about turning your expertise into communication systems that actually reflect who you are and get results that matter.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>airekbeauchamp@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p>(573) 270-7860</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Fenton, MO<br>Available for travel and remote work</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://medium.com/@airekbeauchamp">Medium</a>
+                <a href="https://airekbeauchamp.substack.com/">Substack</a>
+                <a href="https://github.com/airekbeauchamp/airekbeauchamp.github.io">Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">&copy; 2025 Airek Beauchamp Consulting. Strategic communication for people who refuse to be boring.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add subtle parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add hover effects to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+
