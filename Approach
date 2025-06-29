@@ -1,0 +1,633 @@
+About HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Anti-Generic Approach | Airek Beauchamp Consulting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+            margin: 0 auto 2rem;
+            filter: invert(1);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #ff3333 0%, #ff7700 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        nav li {
+            margin: 0 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            font-weight: 300;
+        }
+
+        .intro {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ff4444 0%, #ffaa00 100%);
+        }
+
+        .intro p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .principle-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .principle-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .principle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .principle-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .principle-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .methodology {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .methodology::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,68,68,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+
+        .methodology-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .methodology .section-title {
+            color: white;
+        }
+
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .phase-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .phase-number {
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .phase-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .phase-card ul {
+            color: rgba(255, 255, 255, 0.8);
+            margin-left: 1.5rem;
+        }
+
+        .phase-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .examples {
+            background: #f8f9fa;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .example-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+        }
+
+        .example-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .example-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .result {
+            background: rgba(255, 68, 68, 0.1);
+            border-left: 4px solid #ff4444;
+            padding: 1rem;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-cta {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero-content {
+                padding: 2rem 0;
+            }
+            
+            .logo {
+                width: 150px;
+            }
+            
+            .principles-grid,
+            .phases-grid,
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo" style="background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">Your Logo Here</div>
+                
+                <h1>The Anti-Generic Approach</h1>
+                <p class="tagline">Why Most Communication Consulting Fails</p>
+                <p class="hero-description">Walk into any LinkedIn feed or business conference, and you'll hear the same recycled advice: "Be authentic! Tell your story! Build your personal brand!" Meanwhile, everyone following this advice sounds exactly the same.</p>
+                <a href="#contact" class="cta-button">Ready to Be Different?</a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#principles">Four Principles</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2 class="section-title">The Scholar-Practitioner Difference</h2>
+            <div class="intro">
+                <p>Most communication consultants come from one of two backgrounds: academic theory with no real-world application, or business experience with no intellectual depth. <span class="highlight">I bring both</span>.</p>
+                
+                <p>My PhD in writing studies and sound studies isn't just credentials on a wall. It's hands-on research into how marginalized communities use voice and sound to navigate systems, claim authority, and resist being ignored. This isn't abstract theory—it's <span class="highlight">directly applicable intelligence</span> about how authentic communication cuts through noise and commands attention.</p>
+
+                <p>Seven years building and scaling communication programs taught me that systems beat scattered tactics every time. I secured <span class="highlight">$365,668 in competitive funding</span> not by writing impressive proposals, but by understanding what funders actually want to see versus what applicants think they want to hear.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="principles" class="principles">
+        <div class="container">
+            <h2 class="section-title">Four Principles That Drive Everything</h2>
+            
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <h3>1. Real Expertise Over Generic Polish</h3>
+                    <p>The market is oversaturated with polished content that could be selling anything. What's rare—and what people pay premium prices for—is genuine expertise delivered with authentic voice.</p>
+                    <p>Instead of asking: "How do we make this sound more professional?" I ask: "What do you actually know that others don't, and how do we showcase that knowledge consistently?"</p>
+                </div>
+                
+                <div class="principle-card">
+                    <h3>2. Systems That Scale Without Losing Soul</h3>
+                    <p>One-off tactics don't build businesses. Neither do rigid systems that strip away everything interesting about how you actually think and work.</p>
+                    <p>I create frameworks that grow with you while preserving what makes your expertise valuable. Whether you're writing to one person or one thousand, the voice remains authentically yours.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <h3>3. Platform Integration, Not Platform Optimization</h3>
+                    <p>Most consultants optimize for individual platforms: "Here's your LinkedIn strategy. Here's your email strategy." But your audience doesn't live in silos, and neither should your communication.</p>
+                    <p>I help you build ecosystems where every piece reinforces your expertise. Your newsletter supports your speaking topics, which reinforce your client work, which feeds back into your thought leadership.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <h3>4. Demonstration Over Performance</h3>
+                    <p>There's a crucial difference between communication that performs expertise and communication that demonstrates it. Performance is about appearing knowledgeable. Demonstration is about actually being useful.</p>
+                    <p>One creates the impression of expertise. The other provides evidence of it. Guess which one builds lasting business relationships?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="methodology" class="methodology">
+        <div class="container">
+            <div class="methodology-content">
+                <h2 class="section-title">The Methodology: How We Actually Work</h2>
+                
+                <div class="phases-grid">
+                    <div class="phase-card">
+                        <div class="phase-number">Phase 1</div>
+                        <h3>Expertise Archaeology</h3>
+                        <p>Before writing a single word or choosing a single platform, we dig deep into what you actually know. This isn't a questionnaire or brand audit template. It's strategic analysis:</p>
+                        <ul>
+                            <li>Knowledge mapping: What do you understand that others miss?</li>
+                            <li>Experience inventory: Which problems have you solved?</li>
+                            <li>Credibility audit: What evidence do you have of real expertise?</li>
+                            <li>Market positioning: Where does your knowledge create the most value?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-number">Phase 2</div>
+                        <h3>Systems Architecture</h3>
+                        <p>Based on your actual expertise and business goals, we design communication systems that work together:</p>
+                        <ul>
+                            <li>Message hierarchy: Core themes consistent across contexts</li>
+                            <li>Platform strategy: Where your knowledge creates most impact</li>
+                            <li>Content frameworks: Systems that demonstrate expertise while saving time</li>
+                            <li>Integration planning: How each piece reinforces the others</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-number">Phase 3</div>
+                        <h3>Implementation and Optimization</h3>
+                        <p>Strategy without execution is expensive advice. But execution without strategy is just busy work:</p>
+                        <ul>
+                            <li>Voice documentation: Guidelines that maintain authenticity</li>
+                            <li>Workflow creation: Systems that produce quality efficiently</li>
+                            <li>Training and support: Team development for consistent execution</li>
+                            <li>Performance measurement: Metrics that track business impact</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-number">Phase 4</div>
+                        <h3>Scaling and Evolution</h3>
+                        <p>Good communication systems evolve with your expertise and business goals:</p>
+                        <ul>
+                            <li>Regular refinement: Quarterly reviews based on results</li>
+                            <li>Expansion planning: How to grow reach without diluting message</li>
+                            <li>Team development: Building capacity while maintaining quality</li>
+                            <li>Market adaptation: Adjusting to changes while preserving core positioning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="examples" class="examples">
+        <div class="container">
+            <h2 class="section-title">What This Looks Like in Practice</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>For the Architecture Consultant</h3>
+                    <p>Instead of generic "design tips" content, we position you as the architect who actually understands spatial psychology and building performance. Your furniture collection becomes evidence of curatorial expertise. Your newsletter connects design principles to business outcomes.</p>
+                    <div class="result">Result: Premium pricing because people trust your credibility, not just your inventory.</div>
+                </div>
+                
+                <div class="example-card">
+                    <h3>For the Business Strategy Expert</h3>
+                    <p>Instead of recycled LinkedIn advice about "authenticity," we showcase the specific frameworks you've developed through actual client work. Your case studies become teaching tools. Your content demonstrates problem-solving methodology.</p>
+                    <div class="result">Result: Ideal clients seek you out because they need what you specifically know how to do.</div>
+                </div>
+                
+                <div class="example-card">
+                    <h3>For the Grant Writing Specialist</h3>
+                    <p>Instead of generic "funding tips," we highlight your understanding of what different funders actually prioritize. Your success stories become credibility markers. Your content educates while demonstrating deep knowledge.</p>
+                    <div class="result">Result: Organizations choose you because they see evidence of results, not just promises.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">The Anti-Generic Promise</h2>
+            <p class="contact-cta">While others chase trends and optimize for algorithms, we build communication around what you genuinely know and who genuinely needs it. The first step is understanding what you genuinely know that others don't. From there, we build everything else.</p>
+            <a href="#" class="cta-button">Schedule Strategy Call</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">&copy; 2025 Airek Beauchamp Consulting. Strategic communication for people who refuse to be boring.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add subtle parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.principle-card, .phase-card, .example-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+
