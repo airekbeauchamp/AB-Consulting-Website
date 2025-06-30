@@ -140,7 +140,7 @@
             position: relative;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             background: linear-gradient(135deg, #ff4444 0%, #ff8800 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -285,39 +285,6 @@
             transform: translateX(5px);
         }
 
-        /* Dark Section Styles */
-        .dark-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dark-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,68,68,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-        }
-
-        .dark-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .dark-section .section-title {
-            color: white;
-        }
-
-        /* Light Section Styles */
-        .light-section {
-            background: #f8f9fa;
-        }
-
         /* Contact Section Styles */
         .contact {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -449,9 +416,9 @@
         <div class="container">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#services">All Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="approach.html">Approach</a></li>
+                <li><a href="Services.html" class="active">All Services</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Approach.html">Approach</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -486,11 +453,72 @@
                     <h3>Grant Writing & Funding Strategy</h3>
                     <p>Turn vision into funded reality. $365K+ secured with proposals that tell compelling stories.</p>
                     <p class="price-tag">Starting at $3,500</p>
-                    <a href="grant-writing.
-  
+                    <a href="grant-writing.html" class="service-link">Learn More →</a>
+                </div>
 
+                <!-- Cross-Platform Solutions -->
+                <div class="content-card">
+                    <h3>Cross-Platform Content Systems</h3>
+                    <p>Integrated communication strategies that ensure consistent messaging across all your platforms.</p>
+                    <p class="price-tag">Starting at $4,000</p>
+                    <a href="cross-platform.html" class="service-link">Learn More →</a>
+                </div>
 
+                <!-- Editing & Content Generation -->
+                <div class="content-card">
+                    <h3>Editing & Content Generation</h3>
+                    <p>Professional editing and content creation that transforms your ideas into polished, impactful communications.</p>
+                    <p class="price-tag">Starting at $2,500</p>
+                    <a href="editing-and-content-generation.html" class="service-link">Learn More →</a>
+                </div>
 
+                <!-- Training & Process Documentation -->
+                <div class="content-card">
+                    <h3>Training & Process Documentation</h3>
+                    <p>Comprehensive training programs and process documentation that empower your team and streamline operations.</p>
+                    <p class="price-tag">Starting at $3,000</p>
+                    <a href="training-and-process-documentation.html" class="service-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Get Started?</h2>
+            <p class="contact-cta">Let's discuss how our services can help achieve your organizational goals.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>airek@abconsulting.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p>(555) 123-4567</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Schedule</h3>
+                    <p>Book a strategy call</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2024 AB Consulting. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
   
      
                
