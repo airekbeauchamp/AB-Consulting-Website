@@ -53,16 +53,21 @@
 
         .logo {
             width: 150px;
-            height: auto;
+            height: 150px;
             margin: 0 auto 1.5rem;
             background: rgba(255,255,255,0.1);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1rem;
-            padding: 1rem;
+            overflow: hidden;
+            padding: 0.5rem;
+        }
+
+        .logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         h1 {
@@ -80,14 +85,6 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        .hero-description {
-            font-size: 1rem;
-            opacity: 0.8;
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.7;
         }
 
         .cta-button {
@@ -147,197 +144,97 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Section Styles */
-        section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #1a1a1a;
-            font-weight: 300;
-        }
-
-        .intro {
+        /* Main Content Styles */
+        .service-detail {
             background: white;
-            border-radius: 15px;
+            margin: 3rem auto;
             padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            font-size: 1.1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .intro::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(135deg, #ff4444 0%, #ffaa00 100%);
-        }
-
-        .intro p {
-            margin-bottom: 1.5rem;
-        }
-
-        .intro p:last-child {
-            margin-bottom: 0;
-        }
-
-        .highlight {
-            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-        }
-
-        /* Content Grid Styles */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .content-card {
-            background: white;
-            padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 900px;
         }
 
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .content-card:hover::before {
-            transform: translateX(0);
-        }
-
-        .content-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .content-card h3 {
+        .service-detail h2 {
+            font-size: 2.5rem;
             color: #1a1a1a;
             margin-bottom: 1rem;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
-
-        .content-card p {
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .content-card ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 1rem;
-        }
-
-        .content-card li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .content-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #ff4444;
-            font-weight: bold;
-        }
-
-        /* Dark Section Styles */
-        .dark-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dark-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,68,68,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-        }
-
-        .dark-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .dark-section .section-title {
-            color: white;
-        }
-
-        /* Light Section Styles */
-        .light-section {
-            background: #f8f9fa;
-        }
-
-        /* Investment Section */
-        .investment-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        .investment-section .section-title {
-            color: white;
-            margin-bottom: 2rem;
-        }
-
-        .price {
-            font-size: 2.5rem;
             font-weight: 300;
-            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
+        }
+
+        .service-detail h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ff4444 0%, #ff8800 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 1rem 0;
-            display: block;
         }
 
-        .investment-details {
+        .service-detail h4 {
+            font-size: 1.3rem;
+            color: #444;
+            margin: 1.5rem 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .service-detail p {
             font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
         }
 
-        /* Contact Section Styles */
+        .service-detail ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: #555;
+        }
+
+        .service-detail li {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .investment {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid #ff4444;
+        }
+
+        .investment h3 {
+            margin-top: 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            color: #ff4444;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        /* Contact Section */
         .contact {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
             text-align: center;
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
         }
 
         .contact-cta {
@@ -346,46 +243,7 @@
             opacity: 0.9;
         }
 
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            padding: 1rem;
-        }
-
-        .contact-item h3 {
-            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ffaa00 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .social-links {
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .social-links a:hover {
-            background: linear-gradient(135deg, #ff4444 0%, #ff8800 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Footer Styles */
+        /* Footer */
         footer {
             background: #0a0a0a;
             color: white;
@@ -399,18 +257,23 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .service-detail {
+                padding: 2rem;
+                margin: 2rem auto;
+            }
+
             h1 {
                 font-size: 2rem;
             }
-            
-            .tagline {
-                font-size: 1.1rem;
+
+            .service-detail h2 {
+                font-size: 2rem;
             }
-            
-            .hero-description {
-                font-size: 0.95rem;
+
+            .service-detail h3 {
+                font-size: 1.5rem;
             }
-            
+
             nav ul {
                 flex-direction: column;
                 text-align: center;
@@ -419,33 +282,10 @@
             nav li {
                 margin: 0.5rem 0;
             }
-            
-            .hero-content {
-                padding: 2rem 0;
-            }
-            
+
             .logo {
                 width: 120px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .intro {
-                padding: 2rem;
-            }
-
-            .content-card {
-                padding: 2rem;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            .price {
-                font-size: 2rem;
+                height: 120px;
             }
         }
     </style>
@@ -454,12 +294,11 @@
     <header>
         <div class="container">
             <div class="hero-content">
-                <div class="logo">Your Logo Here</div>
-                
+                <div class="logo">
+                    <img src="consu;ting logo.png" alt="AB Consulting Logo">
+                </div>
                 <h1>Content Strategy & Brand Voice</h1>
                 <p class="tagline">Develop messaging that reflects your actual expertise</p>
-                <p class="hero-description">Stop sounding like everyone else. Build communication systems that demonstrate genuine knowledge and create real connections.</p>
-                <a href="#contact" class="cta-button">Start Your Content Strategy</a>
             </div>
         </div>
     </header>
@@ -468,22 +307,73 @@
         <div class="container">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="#what-you-get">What You Get</a></li>
-                <li><a href="#who-this-serves">Who This Serves</a></li>
+                <li><a href="services.html">All Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="approach.html">Approach</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- What You Get Section -->
-    <section id="what-you-get">
+    <main>
         <div class="container">
-            <h2 class="section-title">What You Get</h2>
+            <a href="services.html" class="back-link">← Back to All Services</a>
             
-            <div class="content-grid">
-                <div class="content-card">
-                    <h3>Strategic Foundation Work</h3>
-                    <ul>
-                        <li>Deep-dive expertise audit to identify your genuine differentiators</li>
-                        <li>Competitive
+            <div class="service-detail">
+                <h2>Content Strategy & Brand Voice</h2>
+                <p>Develop messaging that reflects your actual expertise</p>
+
+                <h3>What You Get</h3>
+                
+                <h4>Strategic Foundation Work</h4>
+                <ul>
+                    <li>Deep-dive expertise audit to identify your genuine differentiators</li>
+                    <li>Competitive landscape analysis focusing on authentic positioning opportunities</li>
+                    <li>Core message architecture that scales across all platforms</li>
+                    <li>Voice documentation that maintains consistency whether you're writing or your team is</li>
+                </ul>
+
+                <h4>Cross-Platform Content Systems</h4>
+                <ul>
+                    <li>LinkedIn strategy that positions you as a genuine expert, not another thought leader</li>
+                    <li>Email newsletter frameworks that demonstrate knowledge rather than just delivering tips</li>
+                    <li>Speaking topic development that reinforces your core expertise areas</li>
+                    <li>Website copy that converts because people understand exactly what you know and do</li>
+                </ul>
+
+                <h4>Implementation Support</h4>
+                <ul>
+                    <li>Content templates that maintain your voice while saving time</li>
+                    <li>Editorial calendars based on expertise demonstration, not trending topics</li>
+                    <li>Team training for maintaining voice consistency across contributors</li>
+                    <li>Ongoing refinement based on audience response and business goals</li>
+                </ul>
+
+                <h3>Who This Serves</h3>
+                <p>Senior professionals with genuine expertise who are tired of sounding like everyone else online. Consultants, executives, and specialists who know their generic "thought leadership" content isn't working because it doesn't reflect who they actually are or what they actually know.</p>
+
+                <div class="investment">
+                    <h3>Investment</h3>
+                    <p>Starting at $5,000 for foundational strategy work. Ongoing implementation support available.</p>
+                </div>
+
+                <a href="#contact" class="cta-button">Schedule a Consultation</a>
+            </div>
+        </div>
+    </main>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Content Strategy?</h2>
+            <p class="contact-cta">Let's discuss how to build messaging that truly reflects your expertise.</p>
+            <a href="mailto:airek@abconsulting.com" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2024 AB Consulting. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
